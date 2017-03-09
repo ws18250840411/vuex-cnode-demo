@@ -37,23 +37,23 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js(x)*$/,
+                test: /\.js$/,
                 exclude: /^node_modules$/,
-                loader: 'babel'
+                loader: 'babel-loader'
             },
             {
                 test: /\.vue$/,
                 loader: 'vue'
             },
             {
-                test: /\.css/,
+                test: /\.css$/,
                 exclude: /^node_modules$/,
-                loader: `style-loader!css-loader!autoprefixer-loader?{ browsers: ['last 100 versions'] }!`
+                loader: "style-loader!css-loader"
             },
             {
-                test: /\.less/,
+                test: /\.less$/,
                 exclude: /^node_modules$/,
-                loader: `style-loader!css-loader!autoprefixer-loader?{ browsers: ['last 100 versions'] }!less-loader`
+                loader: 'style-loader!css-loader!less-loader'
             },
             {
                 test: /\.(png|jpg)$/,
@@ -67,19 +67,11 @@ module.exports = {
             }
         ]
     },
-    plugins,
     resolve: {
         extensions: ['', '.js', '.vue', '.jsx'], //后缀名自动补全
         alias: {
             vue: 'vue/dist/vue.js', //webpack打包时，需要设置别名
             store: path.resolve('src/store/'), //常用工具方法
         }
-    },
-    vue: {
-        postcss: [
-            require('autoprefixer')({
-                browsers: ['last 100 versions']
-            })
-        ]
     }
 }
